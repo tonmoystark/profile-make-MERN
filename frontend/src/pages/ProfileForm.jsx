@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NavBar from '../components/NavBar'
+import axios from 'axios'
 
 const ProfileForm = () => {
 
@@ -16,14 +17,9 @@ const ProfileForm = () => {
         formData.append("bio", bio)
         formData.append("image", image)
 
-        const response = await fetch("http://localhost:3000/create-profiles", {
-            method: "POST",
-            body: formData
-        })
+        const response = await axios.post("http://localhost:3000/create-profiles", formData)
 
-        const data = await response.json()
-
-        console.log(data)
+        console.log(response.data);
 
         setName("")
         setBio("")

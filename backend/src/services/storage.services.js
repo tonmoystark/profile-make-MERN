@@ -5,7 +5,6 @@ const imageKit = new ImageKit({
     privateKey: process.env.IMAGEKIT_PRIVATEKEY
 })
 
-
 const uploadFile = async (buffer) => {
     try {
         const result = await imageKit.files.upload({
