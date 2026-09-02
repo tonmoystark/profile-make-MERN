@@ -26,5 +26,27 @@ app.get("/profiles", async (req, res) => {
     })
 })
 
+app.patch("/profiles/:id", async (req, res) => {
+    const { id } = req.params
+    const { name, bio } = req.body
+    const profile = await profileModel.findById(id)
+    profile.name = name
+    profile.bio = bio
+    await profile.save()
+    res.status(200).json({
+        message: "profile updated successfully",
+        profile
+    })
+})
+
+app.delete("/profiles/:id", async (req, res) => {
+    const { id } = req.params
+    const profile = await profileModel.findByIdAndDelete(id)
+    res.status(200).json({
+        message: "profile deleted successfully",
+        profile
+    })
+})
+
 
 module.exports = app

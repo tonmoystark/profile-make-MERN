@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import Button from "../ui/Button"
 
 const ProfileCard = () => {
 
@@ -29,7 +30,7 @@ const ProfileCard = () => {
         />
     </div>
 
-    <div className="p-6">
+    <div className="px-6 pt-6">
         <h1 className="text-2xl font-bold text-gray-800">
             {profile.name}
         </h1>
@@ -37,6 +38,10 @@ const ProfileCard = () => {
         <p className="text-gray-900 leading-relaxed">
             {profile.bio}
         </p>
+    </div>
+    <div className="flex gap-2 ml-5 my-4">
+        <Button text="Edit" variant="primary" />
+        <Button text="Delete" variant="danger" />
     </div>
 </div>
         )) : <div>
