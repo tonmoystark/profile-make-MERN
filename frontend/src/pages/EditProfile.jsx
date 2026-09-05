@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import Button from "../ui/Button";
 
 const EditProfile = () => {
 
@@ -103,12 +104,12 @@ const EditProfile = () => {
 
                     </div>
 
-                    <button
-                        type="submit"
-                        className="w-full bg-pink-700 text-white py-3 rounded-lg font-semibold hover:bg-pink-800 transition"
-                    >
-                        Update Profile
-                    </button>
+                    <Button 
+                        type={'submit'}
+                        text={'Update Profile'}
+                        variant={'general'}
+                        classes={'w-full hover:cursor-pointer font-bold'}
+                    />
 
                 </form>
 

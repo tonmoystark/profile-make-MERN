@@ -59,13 +59,19 @@ app.patch("/profiles/:id", async (req, res) => {
 })
 
 app.delete("/profiles/:id", async (req, res) => {
-    const { id } = req.params
-    const profile = await profileModel.findByIdAndDelete(id)
-    res.status(200).json({
-        message: "profile deleted successfully",
-        profile
-    })
-})
+    const { id } = req.params;
 
+    const profile = await profileModel.findByIdAndDelete(id);
+
+    if (!profile) {
+        return res.status(404).json({
+            message: "Profile not found"
+        });
+    }
+
+    res.status(200).json({
+        message: "Profile deleted successfully"
+    });
+});
 
 module.exports = app

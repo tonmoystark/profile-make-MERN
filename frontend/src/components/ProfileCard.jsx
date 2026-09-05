@@ -19,10 +19,19 @@ const ProfileCard = () => {
     }, [])
 
     const navigate = useNavigate()
+
+    const deleteHandler = async (id) => {
+        try {
+            await axios.delete(`http://localhost:3000/profiles/${id}`)
+            setProfiles(prevProfiles => prevProfiles.filter(profile => profile._id !== id))
+        } catch {
+            console.log("delete button not working")
+        }
+    }
     
 
   return (
-    <div className="flex-col md:flex-row flex gap-4 ">
+    <div className="flex-col md:flex-row flex ">
         {profiles.length > 0 ? profiles.map((profile, idx) => (
             <div key={idx} className="w-80 bg-pink-600 m-5 rounded-2xl shadow-lg overflow-hidden">
     <div className="h-64 bg-gray-100">
@@ -44,7 +53,7 @@ const ProfileCard = () => {
     </div>
     <div className="flex gap-2 ml-5 my-4">
         <Button text="Edit" variant="primary" onClick={() => navigate(`/edit-profiles/${profile._id}`)} />
-        <Button text="Delete" variant="danger" />
+        <Button text="Delete" variant="danger" onClick={() => deleteHandler(profile._id)} />
     </div>
 </div>
         )) : <div>

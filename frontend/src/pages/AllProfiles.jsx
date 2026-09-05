@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar'
 
 const AllProfiles = () => {
   return (
-    <div className='bg-red-900 h-screen'>
+    <div className='bg-red-900 min-h-screen'>
         <NavBar />
         <ProfileCard />
     </div>

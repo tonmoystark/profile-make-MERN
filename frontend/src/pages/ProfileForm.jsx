@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NavBar from '../components/NavBar'
 import axios from 'axios'
+import Button from '../ui/Button'
 
 const ProfileForm = () => {
 
@@ -98,12 +99,8 @@ const ProfileForm = () => {
                         />
                     </div>
 
-                    <button
-                        type="submit"
-                        className="w-full bg-pink-700 text-white py-3 rounded-lg font-semibold hover:bg-pink-800 transition"
-                    >
-                        Create Profile
-                    </button>
+
+                    <Button type={'submit'} text={'Create Profile'} variant={'general'} classes={'w-full font-semibold hover:cursor-pointer'} />
                 </form>
             </div>
         </div>
