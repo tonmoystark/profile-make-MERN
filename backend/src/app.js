@@ -26,6 +26,25 @@ app.get("/profiles", async (req, res) => {
     })
 })
 
+
+app.get("/profiles/:id", async (req, res) => {
+
+    const { id } = req.params;
+
+    const profile = await profileModel.findById(id);
+
+    if (!profile) {
+        return res.status(404).json({
+            message: "Profile not found"
+        });
+    }
+
+    res.status(200).json({
+        message: "Profile fetched successfully",
+        profile
+    });
+});
+
 app.patch("/profiles/:id", async (req, res) => {
     const { id } = req.params
     const { name, bio } = req.body

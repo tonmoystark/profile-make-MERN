@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Button from "../ui/Button"
+import { useNavigate } from "react-router-dom"
 
 const ProfileCard = () => {
 
@@ -16,6 +17,8 @@ const ProfileCard = () => {
     })
       
     }, [])
+
+    const navigate = useNavigate()
     
 
   return (
@@ -40,12 +43,12 @@ const ProfileCard = () => {
         </p>
     </div>
     <div className="flex gap-2 ml-5 my-4">
-        <Button text="Edit" variant="primary" />
+        <Button text="Edit" variant="primary" onClick={() => navigate(`/edit-profiles/${profile._id}`)} />
         <Button text="Delete" variant="danger" />
     </div>
 </div>
         )) : <div>
-            Sorry! Nothing to show yet
+            <h1 className="text-2xl font-semibold text-rose-950">Sorry! Nothing to show yet</h1>
         </div>}
         
     </div>

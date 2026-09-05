@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Button = ({text, variant}) => {
+const Button = ({text, variant, onClick}) => {
 
     const buttonVariant =
     variant === "primary" ? "bg-blue-500" :
@@ -9,7 +9,7 @@ const Button = ({text, variant}) => {
     "bg-gray-500"
 
   return (
-    <button className={`${buttonVariant} text-white px-4 py-2 rounded`}>
+    <button onClick={onClick} className={`${buttonVariant} text-white px-4 py-2 rounded`}>
         {text}
     </button>
   )
